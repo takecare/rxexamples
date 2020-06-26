@@ -1,0 +1,24 @@
+package org.vazteixeira.rui.rxjava.examples
+
+import io.reactivex.Observable
+import io.reactivex.rxkotlin.subscribeBy
+import org.vazteixeira.rui.rxjava.Example
+import org.vazteixeira.rui.rxjava.runExample
+import java.util.concurrent.CountDownLatch
+
+fun main() = runExample(DefaultIfEmpty)
+
+object DefaultIfEmpty : Example {
+    override fun invoke(latch: CountDownLatch) {
+        val observable = Observable.create<List<Double>> { emitter ->
+            emitter.onComplete()
+        }
+
+        observable
+            .defaultIfEmpty(listOf(99.99))
+            .subscribeBy(
+                onNext = { println(it) },
+                onComplete = { latch.countDown() }
+            )
+    }
+}
