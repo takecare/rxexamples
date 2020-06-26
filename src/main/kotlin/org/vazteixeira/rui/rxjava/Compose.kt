@@ -5,7 +5,7 @@ import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 import java.util.concurrent.CountDownLatch
 
-object Compose : Example {
+object Compose : OldExample {
     val transformer: ObservableTransformer<Double, Double> = ObservableTransformer { upstream ->
         upstream // a transformer that sets up schedulers
             .subscribeOn(Schedulers.computation())

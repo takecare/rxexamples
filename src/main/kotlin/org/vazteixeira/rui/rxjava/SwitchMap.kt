@@ -3,13 +3,11 @@ package org.vazteixeira.rui.rxjava
 import io.reactivex.Observable
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
-import org.vazteixeira.rui.rxjava.examples.User
 import java.util.concurrent.CountDownLatch
-import java.util.concurrent.TimeUnit
 
 fun main() = runExample(SwitchMap)
 
-object SwitchMap : Example {
+object SwitchMap : OldExample {
     override fun invoke(latch: CountDownLatch) {
         fun typingInSearchField() = Observable.just(
             "w", "wh", "wha", "what", "what ", "what i", "what is"

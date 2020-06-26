@@ -3,7 +3,7 @@ package org.vazteixeira.rui.rxjava
 import io.reactivex.rxkotlin.subscribeBy
 import java.util.concurrent.CountDownLatch
 
-object Reduce : Example {
+object Reduce : OldExample {
     override fun invoke(latch: CountDownLatch) {
         randomPublisher()
             .reduce { acc: Double, value: Double -> acc + value }

@@ -8,7 +8,7 @@ import java.util.concurrent.CountDownLatch
 
 fun main() = runExample(ErrorExample)
 
-object ErrorExample : Example {
+object ErrorExample : OldExample {
     override fun invoke(latch: CountDownLatch) {
         fun fail(msg: String) = Observable.fromCallable { throw Exception(msg) }
         Observables.zip(fail("one"), fail("two"))

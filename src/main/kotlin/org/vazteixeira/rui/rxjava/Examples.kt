@@ -6,16 +6,16 @@ import java.util.concurrent.CountDownLatch
 import java.util.concurrent.TimeUnit
 
 @Deprecated("Use [NewExample] instead", ReplaceWith("NewExample"))
-typealias Example = (CountDownLatch) -> Unit // CountDownLatch
+typealias OldExample = (CountDownLatch) -> Unit // CountDownLatch
 
 @Deprecated("Use [NewExample] instead")
-fun runExample(example: Example) {
+fun runExample(example: OldExample) {
     val latch = CountDownLatch(1)
     example(latch)
     latch.await(15, TimeUnit.SECONDS)
 }
 
-interface NewExample {
+interface Example {
 
     fun observable(): Observable<*>
 
@@ -37,7 +37,7 @@ interface NewExample {
     }
 }
 
-fun runExample(example: NewExample) {
+fun runExample(example: Example) {
     example(CountDownLatch(1))
         ?.await(15, TimeUnit.SECONDS)
 }

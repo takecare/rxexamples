@@ -5,7 +5,7 @@ import java.util.concurrent.CountDownLatch
 
 fun main() = runExample(Scan)
 
-object Scan : Example {
+object Scan : OldExample {
     override fun invoke(latch: CountDownLatch) {
         randomPublisher()
             .scan { acc: Double, value: Double -> acc + value }

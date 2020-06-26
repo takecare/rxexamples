@@ -8,7 +8,7 @@ import java.util.concurrent.CountDownLatch
 import kotlin.math.ceil
 
 
-object Lift : Example {
+object Lift : OldExample {
     override fun invoke(latch: CountDownLatch) {
 
         fun countsDownOnLatchOperator(latch: CountDownLatch) =

@@ -1,16 +1,13 @@
 package org.vazteixeira.rui.rxjava.examples
 
 import io.reactivex.Observable
-import io.reactivex.rxkotlin.subscribeBy
-import io.reactivex.schedulers.Schedulers
 import org.vazteixeira.rui.rxjava.*
-import java.util.concurrent.CountDownLatch
 
 fun main() = runExample(FlatMap)
 
 inline class User(val username: String)
 
-object FlatMap : NewExample {
+object FlatMap : Example {
 
     override fun observable(): Observable<String> {
         fun getUser() = Observable.just(

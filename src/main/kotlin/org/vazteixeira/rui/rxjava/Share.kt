@@ -4,7 +4,7 @@ import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 import java.util.concurrent.CountDownLatch
 
-object Share : Example {
+object Share : OldExample {
     override fun invoke(latch: CountDownLatch) {
         val shared = randomPublisher().share()
         shared

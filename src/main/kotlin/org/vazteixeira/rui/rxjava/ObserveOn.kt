@@ -4,7 +4,7 @@ import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 import java.util.concurrent.CountDownLatch
 
-object ObserveOn : Example {
+object ObserveOn : OldExample {
     override fun invoke(latch: CountDownLatch) {
         randomPublisher()
             .observeOn(Schedulers.computation())

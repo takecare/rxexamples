@@ -3,14 +3,14 @@ package org.vazteixeira.rui.rxjava.examples
 import io.reactivex.Observable
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
-import org.vazteixeira.rui.rxjava.Example
+import org.vazteixeira.rui.rxjava.OldExample
 import org.vazteixeira.rui.rxjava.printWithName
 import org.vazteixeira.rui.rxjava.runExample
 import java.util.concurrent.CountDownLatch
 
 fun main() = runExample(ConcatMap)
 
-object ConcatMap : Example {
+object ConcatMap : OldExample {
 
     override fun invoke(latch: CountDownLatch) {
         fun getUser() = Observable.just(

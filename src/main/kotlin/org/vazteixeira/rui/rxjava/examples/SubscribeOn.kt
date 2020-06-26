@@ -3,14 +3,14 @@ package org.vazteixeira.rui.rxjava.examples
 import io.reactivex.Observable
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-import org.vazteixeira.rui.rxjava.Example
+import org.vazteixeira.rui.rxjava.OldExample
 import org.vazteixeira.rui.rxjava.printWithName
 import org.vazteixeira.rui.rxjava.runExample
 import java.util.concurrent.CountDownLatch
 
 fun main() = runExample(SubscribeOn)
 
-object SubscribeOn : Example {
+object SubscribeOn : OldExample {
     lateinit var disposable: Disposable
     val observable = Observable.create<String> { emitter ->
         printWithName("observable creation")

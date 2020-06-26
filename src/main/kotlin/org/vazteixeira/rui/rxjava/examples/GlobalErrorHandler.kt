@@ -4,14 +4,14 @@ import io.reactivex.Observable
 import io.reactivex.plugins.RxJavaPlugins
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
-import org.vazteixeira.rui.rxjava.Example
+import org.vazteixeira.rui.rxjava.OldExample
 import org.vazteixeira.rui.rxjava.printWithName
 import org.vazteixeira.rui.rxjava.runExample
 import java.util.concurrent.CountDownLatch
 
 fun main() = runExample(GlobalErrorHandler)
 
-object GlobalErrorHandler : Example {
+object GlobalErrorHandler : OldExample {
     override fun invoke(latch: CountDownLatch) {
         fun getUser() = Observable.just(
             User("takecare"),
