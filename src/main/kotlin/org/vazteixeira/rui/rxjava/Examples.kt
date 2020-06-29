@@ -17,10 +17,10 @@ fun runExample(example: OldExample) {
 
 interface Example {
 
-    fun observable(): Observable<*>
+    val observable: Observable<*>
 
     operator fun invoke(latch: CountDownLatch? = null): CountDownLatch? {
-        observable()
+        observable
             .subscribe(
                 { printWithName("onNext: $it") },
                 {
