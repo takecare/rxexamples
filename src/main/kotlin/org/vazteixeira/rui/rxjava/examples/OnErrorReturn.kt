@@ -8,10 +8,14 @@ fun main() = runExample(OnErrorReturn)
 
 object OnErrorReturn : Example {
 
-    override fun observable(): Observable<*> {
-        fun getUser() = Observable.error<String>(Exception("boom!"))
+    private fun getUser() = Observable.error<String>(Exception("boom!"))
 
-        return getUser()
+    override val observable: Observable<String> =
+        getUser()
             .onErrorReturn { error -> "default value" }
-    }
 }
+
+// example output:
+//[main]	onSubscribe
+//[main]	onNext: default value
+//[main]	onComplete!

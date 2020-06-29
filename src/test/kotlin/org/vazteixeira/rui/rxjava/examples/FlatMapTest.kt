@@ -18,7 +18,7 @@ class FlatMapTest {
     fun `it completes`() {
         val testObserver = TestObserver<String>()
 
-        FlatMap.observable()
+        FlatMap.observable
             .subscribeOn(Schedulers.trampoline())
             .subscribe(testObserver)
 

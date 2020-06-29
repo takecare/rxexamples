@@ -2,43 +2,35 @@ package org.vazteixeira.rui.rxjava.examples
 
 import io.reactivex.Observable
 import io.reactivex.plugins.RxJavaPlugins
-import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
-import org.vazteixeira.rui.rxjava.OldExample
-import org.vazteixeira.rui.rxjava.printWithName
+import org.vazteixeira.rui.rxjava.Example
 import org.vazteixeira.rui.rxjava.runExample
-import java.util.concurrent.CountDownLatch
 
 fun main() = runExample(GlobalErrorHandler)
 
-object GlobalErrorHandler : OldExample {
-    override fun invoke(latch: CountDownLatch) {
-        fun getUser() = Observable.just(
-            User("takecare"),
-            User("you"),
-            User("another")
-        )
+object GlobalErrorHandler : Example {
+    private fun getUser() = Observable.just(
+        User("takecare"),
+        User("you"),
+        User("another")
+    )
 
-        fun getRepos(username: String) = Observable.create<String> { emitter ->
-            emitter.onNext("$username's 1st repository")
-            emitter.onNext("$username's 2nd repository")
-            throw Exception("boom!")
-        }
-
-        RxJavaPlugins.setErrorHandler { error -> println("UNHANDLED ERROR: $error") }
-
-        getUser()
-            .subscribeOn(Schedulers.computation())
-            .flatMap {
-                getRepos(it.username)
-                    .subscribeOn(Schedulers.newThread())
-            }
-            .subscribeBy(
-                onNext = { printWithName(it) },
-                onError = { println("ERROR: $it") },
-                onComplete = { latch.countDown() }
-            )
+    private fun getRepos(username: String) = Observable.create<String> { emitter ->
+        emitter.onNext("$username's 1st repository")
+        emitter.onNext("$username's 2nd repository")
+        throw Exception("boom!")
     }
+
+    override val observable: Observable<String>
+        get() {
+            RxJavaPlugins.setErrorHandler { error -> println("UNHANDLED ERROR: $error") }
+            return getUser()
+                .subscribeOn(Schedulers.computation())
+                .flatMap {
+                    getRepos(it.username)
+                        .subscribeOn(Schedulers.newThread())
+                }
+        }
 }
 
 // example output w/o RxJavaPlugins.setErrorHandler() (notice the unhandled crash)

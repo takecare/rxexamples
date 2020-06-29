@@ -1,6 +1,9 @@
-package org.vazteixeira.rui.rxjava
+package org.vazteixeira.rui.rxjava.examples
 
 import io.reactivex.rxkotlin.subscribeBy
+import org.vazteixeira.rui.rxjava.OldExample
+import org.vazteixeira.rui.rxjava.randomPublisher
+import org.vazteixeira.rui.rxjava.runExample
 import java.util.concurrent.CountDownLatch
 
 fun main() = runExample(Scan)

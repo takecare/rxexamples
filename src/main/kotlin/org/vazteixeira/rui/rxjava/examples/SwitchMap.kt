@@ -1,8 +1,11 @@
-package org.vazteixeira.rui.rxjava
+package org.vazteixeira.rui.rxjava.examples
 
 import io.reactivex.Observable
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
+import org.vazteixeira.rui.rxjava.OldExample
+import org.vazteixeira.rui.rxjava.printWithName
+import org.vazteixeira.rui.rxjava.runExample
 import java.util.concurrent.CountDownLatch
 
 fun main() = runExample(SwitchMap)
