@@ -15,8 +15,7 @@ fun main() = runExample(Lift)
 
 object Lift : Example {
 
-    override val observable: Observable<Double> =
-        randomPublisher()
+    override val observable: Observable<Double> = randomPublisher()
 
     private fun countsDownOnLatchOperator(latch: CountDownLatch) =
         ObservableOperator<Double, Double> { original ->

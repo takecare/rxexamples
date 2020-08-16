@@ -16,14 +16,12 @@ object RetryWhen : Example {
     private var counter = 0
 
     private fun getData(): Observable<String> = Observable.fromCallable {
-        if (counter == 3) {
+        if (counter == 3) { // will fail 3 times
             return@fromCallable "Data" // throw Exception("BOOM!")
         }
         counter += 1
         throw Exception("Error!!")
     }
-
-    private fun fails() = Observable.fromCallable { throw Exception("BOOM") }
 
     private fun mappedData(): Observable<Result<String>> = getData()
         .map { Result.Success(it) as Result<String> }

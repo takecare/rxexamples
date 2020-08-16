@@ -14,7 +14,8 @@ object FlatMapWary : Example {
         .onErrorReturn { Result.Failure(it) }
 
     private fun getSomethingElse() = Observable.just<Result<String>>(
-        Result.Success("something else"))
+        Result.Success("something else")
+    )
 
     override val observable: Observable<Result<String>> =
         getSomething()

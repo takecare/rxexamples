@@ -1,18 +1,16 @@
 package org.vazteixeira.rui.rxjava.examples
 
-import io.reactivex.rxkotlin.subscribeBy
-import org.vazteixeira.rui.rxjava.OldExample
+import io.reactivex.Observable
+import org.vazteixeira.rui.rxjava.Example
 import org.vazteixeira.rui.rxjava.randomPublisher
-import java.util.concurrent.CountDownLatch
+import org.vazteixeira.rui.rxjava.runExample
 
-object Reduce : OldExample {
-    override fun invoke(latch: CountDownLatch) {
+fun main() = runExample(Reduce)
+
+object Reduce : Example {
+
+    override val observable: Observable<Double> =
         randomPublisher()
             .reduce { acc: Double, value: Double -> acc + value }
-            .subscribeBy(
-                onSuccess = { println("$it") },
-                onComplete = { latch.countDown() }
-            )
-
-    }
+            .toObservable()
 }
